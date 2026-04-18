@@ -2,7 +2,6 @@ FROM node:22-alpine3.21 AS builder
 
 WORKDIR /app
 
-# Update packages to fix potential CVEs
 RUN apk update && apk upgrade --no-cache
 
 COPY package.json package-lock.json ./
@@ -13,7 +12,6 @@ RUN npm run build
 
 FROM nginx:1.27.4-alpine3.21
 
-# Update packages to fix potential CVEs (like OpenSSL)
 RUN apk update && apk upgrade --no-cache && \
     rm /etc/nginx/conf.d/default.conf
 
