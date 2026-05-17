@@ -10,7 +10,7 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM nginx:1.27.4-alpine3.21
+FROM nginx:alpine
 
 RUN apk update && apk upgrade --no-cache && \
     rm /etc/nginx/conf.d/default.conf
